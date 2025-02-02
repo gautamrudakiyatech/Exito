@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
+//    id("com.google.devtools.ksp")
 }
 
 android {
@@ -9,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.exito"
-        minSdk = 16
+        minSdk = 21
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -45,4 +47,24 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+
+    // Retrofit for network requests
+    implementation(libs.squareup.retrofit)
+    // Converter to convert JSON data to Kotlin objects (using Gson)
+    implementation(libs.retrofit2.converter.gson)
+
+    // Room for local database
+    implementation(libs.androidx.room.runtime)
+//    ksp(libs.room.compiler)  // Use annotation processing with Kotlin
+    // If you prefer to use Kotlin Symbol Processing (KSP), there is an alternative
+
+    // Kotlin Coroutines for asynchronous tasks
+    implementation(libs.kotlinx.coroutines.android)
+
+    // Lifecycle & ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.lifecycle.livedata.ktx)
+
+
 }
